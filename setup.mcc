@@ -28,6 +28,8 @@
         -- These objectives are used for camera controls
         !reset_objective zoom_level dummy Zoom Level
         !reset_objective camera dummy Camera
+        -- Used to specify the camera man
+        !reset_objective add cameraman dummy Camera Man
 		
 		-- Recreate SYSTEM entity
 		/kill @e[type=ArmorStand,name=SYSTEM]

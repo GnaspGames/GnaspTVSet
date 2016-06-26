@@ -12,11 +12,11 @@
     /scoreboard players set @a camera 4 {SelectedItem:{tag:{display:{Name:"Camera4"}}}}
     /scoreboard players set @a camera 5 {SelectedItem:{tag:{display:{Name:"Camera5"}}}}
     -- apply controls
-    /tp @a[score_camera=1,score_camera_min=1] @e[name=Camera1]
-    /tp @a[score_camera=2,score_camera_min=2] @e[name=Camera2]
-    /tp @a[score_camera=3,score_camera_min=3] @e[name=Camera3]
-    /tp @a[score_camera=4,score_camera_min=4] @e[name=Camera4]
-    /tp @a[score_camera=5,score_camera_min=5] @e[name=Camera5]
+    /execute @a[score_camera=1,score_camera_min=1] ~ ~ ~ tp @a[score_cameraman_min=1,c=1] @e[name=Camera1]
+    /execute @a[score_camera=2,score_camera_min=2] ~ ~ ~ tp @a[score_cameraman_min=1,c=1] @e[name=Camera2]
+    /execute @a[score_camera=3,score_camera_min=3] ~ ~ ~ tp @a[score_cameraman_min=1,c=1] @e[name=Camera3]
+    /execute @a[score_camera=4,score_camera_min=4] ~ ~ ~ tp @a[score_cameraman_min=1,c=1] @e[name=Camera4]
+    /execute @a[score_camera=5,score_camera_min=5] ~ ~ ~ tp @a[score_cameraman_min=1,c=1] @e[name=Camera5]
     /scoreboard players set @a[score_camera_min=1] camera 0
 
 # ZOOM CONTROLS
@@ -27,19 +27,19 @@
     /scoreboard players add @a[score_zoom_level=74] zoom_level 1 {SelectedItem:{tag:{display:{Name:"ZoomIn"}}}}
     /scoreboard players remove @a[score_zoom_level_min=1] zoom_level 1 {SelectedItem:{tag:{display:{Name:"ZoomOut"}}}}
     -- apply controls
-    /effect @a[score_zoom_level_min=0,score_zoom_level=70] clear
-    /effect @a[score_zoom_level_min=0,score_zoom_level=4] speed 999 6 true
-    /effect @a[score_zoom_level_min=5,score_zoom_level=9] speed 999 5 true
-    /effect @a[score_zoom_level_min=10,score_zoom_level=14] speed 999 4 true
-    /effect @a[score_zoom_level_min=15,score_zoom_level=19] speed 999 3 true
-    /effect @a[score_zoom_level_min=20,score_zoom_level=24] speed 999 2 true
-    /effect @a[score_zoom_level_min=25,score_zoom_level=29] speed 999 1 true
-    /effect @a[score_zoom_level_min=30,score_zoom_level=34] speed 999 0 true
-    /effect @a[score_zoom_level_min=35,score_zoom_level=39] clear
-    /effect @a[score_zoom_level_min=40,score_zoom_level=44] slowness 999 0 true
-    /effect @a[score_zoom_level_min=45,score_zoom_level=49] slowness 999 1 true
-    /effect @a[score_zoom_level_min=50,score_zoom_level=54] slowness 999 2 true
-    /effect @a[score_zoom_level_min=55,score_zoom_level=59] slowness 999 3 true
-    /effect @a[score_zoom_level_min=60,score_zoom_level=64] slowness 999 4 true
-    /effect @a[score_zoom_level_min=65,score_zoom_level=69] slowness 999 5 true
-    /effect @a[score_zoom_level_min=70,score_zoom_level=74] slowness 999 6 true
+    /execute @a[score_zoom_level_min=0,score_zoom_level=70] ~ ~ ~ effect @a[score_cameraman_min=1,c=1] clear
+    /execute @a[score_zoom_level_min=0,score_zoom_level=4] ~ ~ ~ effect @a[score_cameraman_min=1,c=1] speed 999 6 true
+    /execute @a[score_zoom_level_min=5,score_zoom_level=9] ~ ~ ~ effect @a[score_cameraman_min=1,c=1] speed 999 5 true
+    /execute @a[score_zoom_level_min=10,score_zoom_level=14] ~ ~ ~ effect @a[score_cameraman_min=1,c=1] speed 999 4 true
+    /execute @a[score_zoom_level_min=15,score_zoom_level=19] ~ ~ ~ effect @a[score_cameraman_min=1,c=1] speed 999 3 true
+    /execute @a[score_zoom_level_min=20,score_zoom_level=24] ~ ~ ~ effect @a[score_cameraman_min=1,c=1] speed 999 2 true
+    /execute @a[score_zoom_level_min=25,score_zoom_level=29] ~ ~ ~ effect @a[score_cameraman_min=1,c=1] speed 999 1 true
+    /execute @a[score_zoom_level_min=30,score_zoom_level=34] ~ ~ ~ effect @a[score_cameraman_min=1,c=1] speed 999 0 true
+    /execute @a[score_zoom_level_min=35,score_zoom_level=39] ~ ~ ~ effect @a[score_cameraman_min=1,c=1] clear
+    /execute @a[score_zoom_level_min=40,score_zoom_level=44] ~ ~ ~ effect @a[score_cameraman_min=1,c=1] slowness 999 0 true
+    /execute @a[score_zoom_level_min=45,score_zoom_level=49] ~ ~ ~ effect @a[score_cameraman_min=1,c=1] slowness 999 1 true
+    /execute @a[score_zoom_level_min=50,score_zoom_level=54] ~ ~ ~ effect @a[score_cameraman_min=1,c=1] slowness 999 2 true
+    /execute @a[score_zoom_level_min=55,score_zoom_level=59] ~ ~ ~ effect @a[score_cameraman_min=1,c=1] slowness 999 3 true
+    /execute @a[score_zoom_level_min=60,score_zoom_level=64] ~ ~ ~ effect @a[score_cameraman_min=1,c=1] slowness 999 4 true
+    /execute @a[score_zoom_level_min=65,score_zoom_level=69] ~ ~ ~ effect @a[score_cameraman_min=1,c=1] slowness 999 5 true
+    /execute @a[score_zoom_level_min=70,score_zoom_level=74] ~ ~ ~ effect @a[score_cameraman_min=1,c=1] slowness 999 6 true
