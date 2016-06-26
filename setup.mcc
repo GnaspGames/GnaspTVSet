@@ -1,0 +1,57 @@
+-----------------------------
+--    Setup / Reset Map    --
+-----------------------------
+-- This module is used to start/reset the map when needed.
+
+# START / RESET
+{"type":"repeating", "auto": true}
+/kill @e[type=ArmorStand,name=RESET]
+	{"conditional":true}
+	/execute @e[type=ArmorStand,name=SYSTEM] ~ ~ ~ say RESETTING MAP
+		{"type":"chain", "conditional":false}
+		
+		-- ## Use correct game rules ##
+		/gamerule doDaylightCycle false
+		/gamerule logAdminCommands false
+		/gamerule doMobSpawning false
+		/gamerule mobGriefing false
+		/gamerule showDeathMessages true
+		/gamerule commandBlockOutput false
+		/gamerule sendCommandFeedback false
+		/gamerule keepInventory true
+		
+		-- ## Reset all objectives ##
+		-- Use this objective to track whether players need to be moved to a lobby
+		!reset_objective lobbyStatus dummy LOBBY STATUS
+		-- This objective is used to monitor 'testfor' command blocks SuccessCount
+		!reset_objective testforOutput dummy TESTFOR OUTPUT
+        -- These objectives are used for camera controls
+        !reset_objective zoom_level dummy Zoom Level
+        !reset_objective camera dummy Camera
+		
+		-- Recreate SYSTEM entity
+		/kill @e[type=ArmorStand,name=SYSTEM]
+		/summon ArmorStand -88.0 19.0 -88.0 { NoGravity : 1b, Invulnerable : 1b, CustomName : "SYSTEM", CustomNameVisible : 1b }
+		-- Finish
+		/execute @e[type=ArmorStand,name=SYSTEM] ~ ~ ~ say THE MAP HAS BEEN RESET
+		
+		-- Set time
+		/time set 18000
+#
+# RUN RESET
+{"type":"impulse","auto":false,"conditional":false}
+/summon ArmorStand ~ ~ ~ {CustomName:RESET}
+
+#
+# NEW PLAYERS
+{"type":"repeating", "auto": true}
+/scoreboard players add @a lobbyStatus 0
+	{"type":"chain"}
+		{"executeAs":"@a[score_lobbyStatus_min=0,score_lobbyStatus=0]"}
+            /tp @p 0 64 492 0 0
+            /gamemode adventure @p
+            /effect @p minecraft:saturation 1000000 20 true
+            /spawnpoint @p 0 64 492
+            /scoreboard players set @p lobbyStatus 1
+		{"executeAs":""}
+
