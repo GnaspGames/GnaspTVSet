@@ -29,7 +29,9 @@
         !reset_objective zoom_level dummy Zoom Level
         !reset_objective camera dummy Camera
         // -- Used to specify the camera man
-        !reset_objective add cameraman dummy Camera Man
+        !reset_objective cameraman dummy Camera Man
+		// Used to specificy cutscene scenes
+		!reset_objective cutscenecount dummy Cutscene Count
 		
 		// -- Recreate SYSTEM entity
 		/kill @e[type=armor_stand,name=SYSTEM]

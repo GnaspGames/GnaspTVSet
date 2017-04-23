@@ -31,7 +31,7 @@ CamPath.Execute = function(smelt)
 	var y_rot_stop = smelt.args[11];
 	var x_rot_stop = smelt.args[12];
 	
-	var gamemode = (args.length > 13 ? smelt.args[13] : null);
+	var gamemode = (smelt.args.length > 13 ? smelt.args[13] : null);
 	
 	var returnTp = false;
 	var x_return = null;
@@ -40,7 +40,7 @@ CamPath.Execute = function(smelt)
 	var y_rot_return = null;
 	var x_rot_return = null;
 	
-	if(args.length > 18)
+	if(smelt.args.length > 18)
 	{
 		returnTp = true;
 		x_return = smelt.args[14];
@@ -65,7 +65,7 @@ CamPath.Execute = function(smelt)
 	/execute @a[tag=<tag>,score_<objective>_min=0,score_<objective>=0] ~ ~ ~
 		tp @p <x_start> <y_start> <z_start> <y_rot_start> <x_rot_start>
 	/execute @a[tag=<tag>,score_<objective>_min=0,score_<objective>=0] ~ ~ ~
-		summon AreaEffectCloud {Duration:<ticks+2>,Tags:["cam_<tag>"]}
+		summon area_effect_cloud {Duration:<ticks+2>,Tags:["cam_<tag>"]}
 	/execute @a[tag=<tag>,score_<objective>_min=0,score_<objective>=0] ~ ~ ~
 		tp @e[tag=cam_<tag>,c=1] @p
 	
@@ -107,9 +107,11 @@ CamPath.Execute = function(smelt)
 	// Start:
 	smelt.addCommandBlock(util.format("scoreboard players add @a[tag=%s] %s 0", tag, objective));
 	executeStr = util.format("@a[tag=%s,score_%s_min=0,score_%s=0]", tag, objective, objective);
-		smelt.addCommandBlock("gamemode spectator @p", {executeAs:executeStr});
+		
+		//smelt.addCommandBlock("gamemode creative @p", {executeAs:executeStr});
+		
 		smelt.addCommandBlock(util.format("tp @p %s %s %s %s %s", x_start, y_start, z_start, y_rot_start, x_rot_start), {executeAs:executeStr});
-		smelt.addCommandBlock(util.format("summon AreaEffectCloud ~ ~ ~ {Duration:%s,Tags:[\"cam_%s\"]}", ticks + 2, tag), {executeAs:executeStr});
+		smelt.addCommandBlock(util.format("summon area_effect_cloud ~ ~ ~ {Duration:%s,Tags:[\"cam_%s\"]}", ticks + 2, tag), {executeAs:executeStr});
 		smelt.addCommandBlock(util.format("tp @e[tag=cam_%s,c=1] @p", tag), {executeAs:executeStr});
 	
 	// Movement:

@@ -1,0 +1,12 @@
+// -- CAM PATHS --
+// This module moves the camera along set paths
+// when the camera is given a tag relating to a
+// specified path
+
+
+# CAMERA PATHS
+>{"type":"repeating-chain", "auto": true}
+
+!campath cutscenecount camPath1 30 -7.175 67.81594 494.3729 -42.3 18.0 0.524 64 497.501 -0.3 0.2
+
+!campath cutscenecount camPath2 30 0.524 64 497.501 -0.3 0.2 8.609 68.00 494.418 42.9 15.4

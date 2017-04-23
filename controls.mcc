@@ -2,14 +2,10 @@
 //-- This module controls camera movement
 //-- and zoom 
 
-!init scoreboard objectives remove cutscenecount
-!init scoreboard objectives add cutscenecount dummy
-
 # CAMERA CONTROLS
->{"type":"repeating", "auto": true}
+>{"type":"repeating-chain", "auto": true}
     // Recognise controls
     /scoreboard players set @a camera 1 {SelectedItem:{tag:{display:{Name:"Camera1"}}}}
-    >{"type":"chain"}
     /scoreboard players set @a camera 2 {SelectedItem:{tag:{display:{Name:"Camera2"}}}}
     /scoreboard players set @a camera 3 {SelectedItem:{tag:{display:{Name:"Camera3"}}}}
     /scoreboard players set @a camera 4 {SelectedItem:{tag:{display:{Name:"Camera4"}}}}
@@ -23,10 +19,9 @@
     /scoreboard players set @a[score_camera_min=1] camera 0
 
 # ZOOM CONTROLS
->{"type":"repeating", "auto": true}
+>{"type":"repeating-chain", "auto": true}
     // Recognise controls
     /scoreboard players set @a zoom_level 35 {SelectedItem:{tag:{display:{Name:"ZoomReset"}}}}
-    >{"type":"chain"}
     /scoreboard players add @a[score_zoom_level=74] zoom_level 1 {SelectedItem:{tag:{display:{Name:"ZoomIn"}}}}
     /scoreboard players remove @a[score_zoom_level_min=1] zoom_level 1 {SelectedItem:{tag:{display:{Name:"ZoomOut"}}}}
     // Apply controls
@@ -46,3 +41,26 @@
     /execute @a[score_zoom_level_min=60,score_zoom_level=64] ~ ~ ~ effect @a[score_cameraman_min=1,c=1] slowness 999 4 true
     /execute @a[score_zoom_level_min=65,score_zoom_level=69] ~ ~ ~ effect @a[score_cameraman_min=1,c=1] slowness 999 5 true
     /execute @a[score_zoom_level_min=70,score_zoom_level=74] ~ ~ ~ effect @a[score_cameraman_min=1,c=1] slowness 999 6 true
+
+# CAM PATH CONTROLS
+>{"type":"repeating-chain", "auto": true, "trackOutput": true}
+    // Recognise controls
+    /scoreboard players tag @a add startPath1 {SelectedItem:{tag:{display:{Name:"CamPath1"}}}}
+    /scoreboard players tag @a add startPath2 {SelectedItem:{tag:{display:{Name:"CamPath2"}}}}
+    // /scoreboard players tag @a add startPath3 {SelectedItem:{tag:{display:{Name:"CamPath3"}}}}
+    // /scoreboard players tag @a add startPath4 {SelectedItem:{tag:{display:{Name:"CamPath4"}}}}
+    // /scoreboard players tag @a add startPath5 {SelectedItem:{tag:{display:{Name:"CamPath5"}}}}
+    
+    // Apply controls
+    /execute @a[tag=startPath1] ~ ~ ~ scoreboard players tag @a[score_cameraman_min=1,c=1] add camPath1
+    /execute @a[tag=startPath2] ~ ~ ~ scoreboard players tag @a[score_cameraman_min=1,c=1] add camPath2
+    // /execute @a[tag=startPath3] ~ ~ ~ scoreboard players tag @a[score_cameraman_min=1,c=1] add camPath3
+    // /execute @a[tag=startPath4] ~ ~ ~ scoreboard players tag @a[score_cameraman_min=1,c=1] add camPath4
+    // /execute @a[tag=startPath5] ~ ~ ~ scoreboard players tag @a[score_cameraman_min=1,c=1] add camPath5
+    
+    // Remove control tags
+    /scoreboard players tag @a[tag=startPath1] remove startPath1
+    /scoreboard players tag @a[tag=startPath2] remove startPath2
+    // scoreboard players tag @a[tag=startPath3] remove startPath3
+    // scoreboard players tag @a[tag=startPath4] remove startPath4
+    // scoreboard players tag @a[tag=startPath5] remove startPath5
