@@ -1,3 +1,4 @@
 /game/logs
 /game/saves
 /game/realms_persistence.json
+/game/usercache.json
