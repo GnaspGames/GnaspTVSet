@@ -5,9 +5,9 @@
 
 # START / RESET
 >{"type":"repeating", "auto": true}
-/kill @e[type=ArmorStand,name=RESET]
+/kill @e[type=armor_stand,name=RESET]
 	>{"conditional":true}
-	/execute @e[type=ArmorStand,name=SYSTEM] ~ ~ ~ say RESETTING MAP
+	/execute @e[type=armor_stand,name=SYSTEM] ~ ~ ~ say RESETTING MAP
 		>{"type":"chain", "conditional":false}
 		
 		// -- ## Use correct game rules ##
@@ -32,17 +32,17 @@
         !reset_objective add cameraman dummy Camera Man
 		
 		// -- Recreate SYSTEM entity
-		/kill @e[type=ArmorStand,name=SYSTEM]
-		/summon ArmorStand -88.0 19.0 -88.0 { NoGravity : 1b, Invulnerable : 1b, CustomName : "SYSTEM", CustomNameVisible : 1b }
+		/kill @e[type=armor_stand,name=SYSTEM]
+		/summon armor_stand -88.0 19.0 -88.0 { NoGravity : 1b, Invulnerable : 1b, CustomName : "SYSTEM", CustomNameVisible : 1b }
 		// -- Finish
-		/execute @e[type=ArmorStand,name=SYSTEM] ~ ~ ~ say THE MAP HAS BEEN RESET
+		/execute @e[type=armor_stand,name=SYSTEM] ~ ~ ~ say THE MAP HAS BEEN RESET
 		
 		// -- Set time
 		/time set 18000
 #
 # RUN RESET
 >{"type":"impulse","auto":false,"conditional":false}
-/summon ArmorStand ~ ~ ~ {CustomName:RESET}
+/summon armor_stand ~ ~ ~ {CustomName:RESET}
 
 #
 # NEW PLAYERS
