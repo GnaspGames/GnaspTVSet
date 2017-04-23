@@ -1,17 +1,20 @@
----  TV SET CONTROLS ---
--- This module controls camera movement
--- and zoom controls
+//---  TV SET CONTROLS ---
+//-- This module controls camera movement
+//-- and zoom 
+
+!init scoreboard objectives remove cutscenecount
+!init scoreboard objectives add cutscenecount dummy
 
 # CAMERA CONTROLS
-{"type":"repeating", "auto": true}
-    -- recognise controls
+>{"type":"repeating", "auto": true}
+    // Recognise controls
     /scoreboard players set @a camera 1 {SelectedItem:{tag:{display:{Name:"Camera1"}}}}
-    {"type":"chain"}
+    >{"type":"chain"}
     /scoreboard players set @a camera 2 {SelectedItem:{tag:{display:{Name:"Camera2"}}}}
     /scoreboard players set @a camera 3 {SelectedItem:{tag:{display:{Name:"Camera3"}}}}
     /scoreboard players set @a camera 4 {SelectedItem:{tag:{display:{Name:"Camera4"}}}}
     /scoreboard players set @a camera 5 {SelectedItem:{tag:{display:{Name:"Camera5"}}}}
-    -- apply controls
+    // Apply controls
     /execute @a[score_camera=1,score_camera_min=1] ~ ~ ~ tp @a[score_cameraman_min=1,c=1] @e[name=Camera1]
     /execute @a[score_camera=2,score_camera_min=2] ~ ~ ~ tp @a[score_cameraman_min=1,c=1] @e[name=Camera2]
     /execute @a[score_camera=3,score_camera_min=3] ~ ~ ~ tp @a[score_cameraman_min=1,c=1] @e[name=Camera3]
@@ -20,13 +23,13 @@
     /scoreboard players set @a[score_camera_min=1] camera 0
 
 # ZOOM CONTROLS
-{"type":"repeating", "auto": true}
-    -- recognise controls
+>{"type":"repeating", "auto": true}
+    // Recognise controls
     /scoreboard players set @a zoom_level 35 {SelectedItem:{tag:{display:{Name:"ZoomReset"}}}}
-    {"type":"chain"}
+    >{"type":"chain"}
     /scoreboard players add @a[score_zoom_level=74] zoom_level 1 {SelectedItem:{tag:{display:{Name:"ZoomIn"}}}}
     /scoreboard players remove @a[score_zoom_level_min=1] zoom_level 1 {SelectedItem:{tag:{display:{Name:"ZoomOut"}}}}
-    -- apply controls
+    // Apply controls
     /execute @a[score_zoom_level_min=0,score_zoom_level=70] ~ ~ ~ effect @a[score_cameraman_min=1,c=1] clear
     /execute @a[score_zoom_level_min=0,score_zoom_level=4] ~ ~ ~ effect @a[score_cameraman_min=1,c=1] speed 999 6 true
     /execute @a[score_zoom_level_min=5,score_zoom_level=9] ~ ~ ~ effect @a[score_cameraman_min=1,c=1] speed 999 5 true
